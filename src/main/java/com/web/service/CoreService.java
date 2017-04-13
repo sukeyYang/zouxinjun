@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.utils.SendRedPackUtil;
 import com.web.component.robbot.TulingApiProcess;
-import com.web.entity.Schedule;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,7 @@ public class CoreService {
 
     static Log log = LogFactory.getLog(CoreService.class);
 
-    @Autowired
-    SurveyService surveyService;
+
 
     /**
      * 处理微信发来的请求

@@ -1,0 +1,948 @@
+/*全局样式*/
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, 
+body {
+	/*font-family: .PingFangSC-Medium;*/
+}
+
+a {
+	color: currentColor;
+	text-decoration: none;
+}
+
+button,
+input,
+textarea {
+	font-size:100%;
+	margin:0;
+	vertical-align:baseline;
+}
+
+.clearfix::after {
+	display: block;
+	content: "";
+	clear: both;
+	visibility: hidden;
+}
+
+/*用户验证页面*/
+/*首次参加活动的用户需要完善信息才能参加活动*/
+/*完善信息*/
+.prefectUserinfo {
+			font-size: 0.26rem;
+			background: #fff;
+			border-radius: 0.1rem;
+			text-align: center;
+			margin: 40% 0.2rem 0;
+			padding-bottom: 0.2rem;
+			overflow: hidden;
+		}
+
+form div.input-item {
+	height: 0.7rem;
+	line-height: 0.7rem;
+}
+
+form div.input-item input {
+	height: 0.5rem;
+}
+
+form div.input-item + button {
+	width: 1.5rem;
+	height: 0.5rem;
+	line-height: 0.5rem;
+	border: 0.02rem solid #000000;
+	border-radius: 0.08rem;
+	background: inherit;
+	font-size: 0.26rem;
+	margin-top: 0.1rem;
+}
+
+/*tabBar
+* 底层菜单栏
+*/
+.tabBar {
+	width: 100%;
+	height: 0.85rem;
+	padding-left: 0.61rem;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	font-size: 0;
+	background: #FFF;
+	z-index: 999;
+}
+
+.tabBar > a {
+	height: 100%;
+	display: inline-block;
+}
+
+.tabBar img {
+	height: 0.5rem;
+	margin: 0.18rem 0.61rem 0;
+}
+
+/*index.html
+* 首页
+*/
+/*页面层*/
+.index {
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+/*活动入口*/
+.indexEntry1,
+.indexEntry2 {
+	width: 5.7rem;
+	height: 3.2rem;
+	margin: auto 0.35rem;
+	overflow: hidden;
+}
+
+.indexEntry1 {
+	margin-top: 0.4rem;
+	background: url(../images/index-img1.jpg) 0 0 / 100% 100%;
+}
+
+.indexEntry2 {
+	margin-top: 0.6rem;
+	background: url(../images/index-img2.jpg) 0 0 / 100% 100%;
+}
+
+.activityTitle {
+	margin-top: 2.26rem;
+	padding-left: 0.17rem;
+	font-size: 0.3rem;
+	line-height: 1.4;
+	color: #fff;
+}
+
+.activityDesc {
+	margin-top: 0.14rem;
+	padding-left: 0.17rem;
+	font-size: 0.2rem;
+	color: #fff;
+}
+
+.indexZxj {
+	width: 2.13rem;
+	height: 0.75rem;
+	position: absolute;
+	bottom: 0.96rem;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+/*活动层弹出时页面层添加模糊效果*/
+.blur {
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
+}
+
+/*活动弹层*/
+.indexLayer {
+	width: 100%;
+	height: calc(100% - 0.85rem);
+	background: rgba(180, 180, 180, 0.5);
+	padding: 0.5rem 0.35rem 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: none;
+}
+
+/*活动详情*/
+.activity1,
+.activity2 {
+	width: 5.7rem;
+	height: 7.7rem;
+	padding: 0 0.35rem;
+	background: #FFF;
+	box-shadow: 0 0.02rem 0.1rem 0 rgba(0,0,0,0.50);
+	border-radius: 0.1rem;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+/*关闭按钮*/
+.endBtn {
+	width: 0.34rem;
+	height: 0.34rem;
+	position: absolute;
+	top: 0.2rem;
+	right: 0.2rem;
+}
+
+.endBtn span {
+	width: 100%;
+	height: 2px;
+	background: #000;
+	position: absolute;
+	top: 50%;
+	left: 0;
+}
+
+.endBtn span:first-child {
+	-webkit-transform: rotateZ(45deg);
+}
+
+.endBtn span:last-child {
+	-webkit-transform: rotateZ(-45deg);
+}
+
+.indexLayer .activityDetail {
+	margin: 0.27rem 0 0.3rem;
+}
+
+.indexLayer img {
+	width: 5rem;
+	height: 2.8rem;
+}
+
+.indexLayer h2 {
+	font-size: 0.32rem;
+	line-height: 0.78rem;
+	color: #4A4A4A;
+}
+
+.indexLayer p {
+	font-size: 0.26rem;
+	color: #848484;
+	text-align: left;
+}
+
+/*立即参加按钮*/
+.indexLayer a {
+	display: inline-block;
+	-webkit-appearance: button;
+	width: 1.7rem;
+	height: 0.6rem;
+	line-height: 0.56rem;
+	border: 0.02rem solid #000000;
+	border-radius: 0.08rem;
+	background: inherit;
+	font-size: 0.26rem;
+	font-weight: bold;
+}
+
+
+/*mainActivity.html
+*主活动页面
+*/
+/*加号按钮*/
+.addBtn {
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 50%;
+	background: #000;
+	position: fixed;
+	bottom: 1.15rem;
+	left: 0.35rem;
+	z-index: 199;
+}
+
+.addBtn span {
+	width: 0.48rem;
+	height: 0.1rem;
+	background: #fff;
+	position: absolute;
+	top: calc(50% - 0.05rem);
+	left: 0.16rem;
+}
+
+.addBtn span:first-child {
+	-webkit-transform: rotateZ(0deg);
+}
+
+.addBtn span:last-child {
+	-webkit-transform: rotateZ(90deg);
+}
+
+/*底层页面*/
+.mailBox {
+	width: 100%;
+	height: calc(100% - 0.85rem);
+	z-index: 111;
+}
+
+/*拆信机会为0*/
+.chance0 {
+	width: 3.4rem;
+	height: 1.2rem;
+	font-size: 0.26rem;
+	color: #fff;
+	background: rgba(74,73,74,0.9);
+	border-radius: 0.15rem;
+	padding-top: 0.24rem;
+	text-align: center;
+	position: absolute;
+	top: 3.25rem;
+	left: 1.55rem;
+	display: none;
+}
+
+/*信件列表*/
+.mailBox ul {
+	height: 100%;
+	list-style: none;
+	padding-top: 0.3rem;
+	overflow: scroll;
+}
+
+.mailBox li{
+	width: 5rem;
+	height: 2.45rem;
+	margin: 0 0.7rem 0.3rem;
+	padding: 0.1rem;
+	box-shadow: 0 0.02rem 0.05rem #848484;
+	border-radius: 0.03rem;
+	text-align: center;
+	overflow: hidden;
+	background: url(../images/mail1.png) 0.2rem 1.58rem no-repeat / 1.16rem 0.6rem, url(../images/mail2.png) 2.94rem 0.02rem no-repeat / 0.9rem 0.9rem, url(../images/mail3.png) 3.56rem 0.2rem no-repeat / 1.44rem 0.57rem;
+}
+
+.mailBox h2 {
+	font-size: 0.3rem;
+	color: #4A4A4A;
+	margin-top: 0.96rem;
+}
+
+.mailBox p {
+	font-size: 0.24rem;
+	text-align: right;
+	margin-top: 0.56rem;
+}
+
+/*确认弹层*/
+.confirmLayer {
+	width: 100%;
+	height: calc(100% - 0.85rem);
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: none;
+	z-index: 222;
+}
+
+/*确认是否领取信件*/
+.confirm {
+	width: 4.2rem;
+	height: 2rem;
+	font-size: 0.26rem;
+	color: #fff;
+	background: rgba(74,73,74,0.9);
+	border-radius: 0.15rem;
+	padding-top: 0.6rem;
+	text-align: center;
+	position: absolute;
+	top: 2.9rem;
+	left: 1.1rem;
+}
+
+/*确认是否领取信件*/
+/*不确认/关闭按钮*/
+.noBtn {
+	width: 0.33rem;
+	height: 0.33rem;
+	position: absolute;
+	top: 1.38rem;
+	left: 1.37rem;
+}
+
+.noBtn span {
+	width: 0.42rem;
+	height: 0.05rem;
+	background: #fff;
+	position: absolute;
+	top: calc(50% - 0.02rem);
+	left: 0;
+}
+
+.noBtn span:first-child {
+	-webkit-transform: rotateZ(45deg);
+}
+
+.noBtn span:last-child {
+	-webkit-transform: rotateZ(-45deg);
+}
+
+/*确认是否领取信件*/
+/*确认按钮*/
+.yesBtn {
+	width: 0.44rem;
+	height: 0.33rem;
+	position: absolute;
+	top: 1.38rem;
+	left: 2.4rem;
+}
+
+.yesBtn span {
+	height: 0.05rem;
+	background: #fff;
+	position: absolute;
+	top: calc(50% - 0.02rem);
+}
+
+.yesBtn span:first-child {
+	width: 0.22rem;
+	left: 0;
+	-webkit-transform: rotateZ(45deg);
+}
+
+.yesBtn span:last-child {
+	width: 0.45rem;
+	left: 0.13rem;
+	-webkit-transform: rotateZ(-40deg);
+}
+
+/*信件内容弹层*/
+ .mailLayer {
+ 	width: 100%;
+	height: calc(100% - 0.85rem);
+	background: rgba(180, 180, 180, 0.5);
+	padding: 0.5rem 0.35rem 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: none;
+	z-index: 333;
+ }
+
+/*信件内容*/
+ .mailContent {
+ 	width: 5.7rem;
+	height: 7.7rem;
+	padding: 0.3rem 0.77rem 0;
+	box-shadow: 0 0.02rem 0.1rem 0 rgba(0,0,0,0.50);
+	border-radius: 0.1rem;
+	text-align: center;
+	background: url(../images/mailContent.png) 0 5.9rem no-repeat / 2.88rem 1.76rem, #fff repeat;
+	position: relative;
+ }
+
+ .mailContent h2 {
+	font-size: 0.32rem;
+	line-height: 0.45rem;
+	color: #4A4A4A;
+	margin-bottom: 0.3rem;
+}
+
+.mailContent p {
+	font-size: 0.26rem;
+	color: #4A4A4A;
+	text-align: left;
+	text-indent: 2em;
+}
+
+.mailContent p.contactWay {
+	position: absolute;
+	bottom: 1.2rem;
+	right: 0.3rem;
+	text-indent: 0;
+}
+
+.mailContent button {
+	width: 1.7rem;
+	height: 0.6rem;
+	font-size: 0.26rem;
+	border: 0.02rem solid #848484;
+	border-radius: 0.08rem;
+	background: #fff;
+	position: absolute;
+	bottom: 0.3rem;
+	left: 2rem;
+}
+
+/*拆信机会-1*/
+.mailContent .chance {
+	width: 3.4rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	font-size: 0.26rem;
+	color: #fff;
+	background: rgba(74,73,74,0.9);
+	border-radius: 0.15rem;
+	position: absolute;
+	top: 2.6rem;
+	left: 1.15rem;
+}
+
+/*发布信息并提示关注层*/
+.postLayer {
+	width: 100%;
+	height: calc(100% - 0.85rem);
+	background: rgba(180, 180, 180, 0.8);
+	padding: 0.5rem 0.35rem 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: none;
+	z-index: 444;
+}
+
+/*发布信息*/
+.postMessage {
+	width: 5.7rem;
+	height: 7.7rem;
+	background: #fff;
+	border-radius: 0.1rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.postMessage:before {
+	content: '';
+	width: 0;
+	border-top: 0.2rem solid #fff;
+	border-right: 0.3rem solid transparent;
+	position: absolute;
+	bottom: -0.2rem;
+	left: 0.3rem;
+}
+
+.postMessage form {
+	width: 100%;
+	height: 100%;
+	padding: 0.3rem 0.4rem 0;
+	font-size: 0.26rem;
+	background: #fff;
+}
+
+.postMessage form input,
+.postMessage form textarea,
+.postMessage button {
+	border: 1px solid #979797;
+	border-radius: 0.1rem;
+	margin-bottom: 0.3rem;
+	padding-left: 0.1rem;
+}
+
+.postMessage form input {
+	display: list-item;
+	width: 2.34rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
+}
+
+.postMessage form textarea{
+	width: 4.9rem;
+	height: 3.5rem;
+	padding-top: 0.1rem;
+	line-height: 1.5;
+}
+
+.postMessage button {
+	width: 1.7rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	padding: 0;
+	margin: 0;
+	background: #fff;
+	text-align: center;
+}
+
+.postMessage form button {
+	margin-top: 0.2rem;
+	margin-left: 1.6rem;
+}
+
+.postMessage .tip {
+	height: 0.25rem;
+	font-size: 0.18rem;
+	color: red;
+}
+
+/*提示关注*/
+.payAttention {
+	width: 100%;
+	height: 100%;
+	padding: 0.4rem 0.85rem 0;
+	font-size: 0.26rem;
+	text-align: center;
+	background: #fff;
+}
+
+.payAttention h2 {
+	font-size: 0.32rem;
+	color: #4A4A4A;
+	margin-bottom: 0.18rem;
+}
+
+.payAttention h2 + p {
+	color: #979797;
+}
+
+.payAttention img {
+	width: 4rem;
+	height: 4rem;
+	margin: 0.15rem auto;
+}
+
+/* message.html
+* 信息通知页面
+*/
+/*底部菜单栏提示有几条信息的小红点*/
+.prompt {
+	display: inline-block;
+	width: 0.3rem;
+	height: 0.3rem;
+	border-radius: 50%;
+	background: #F43531;
+	color: #fff;
+	font-size: 0.15rem;
+	text-align: center;
+}
+
+/*小红点的位置*/
+.abs {
+	position: fixed;
+	bottom: 0.45rem;
+	left: 3.3rem;
+	z-index: 1000;
+}
+
+.message {
+	font-size: 0;
+	background: #fff;
+}
+
+.meg-list {
+	display: block;
+	width: 100%;
+	height: 1.5rem;
+	padding: 0.25rem 0.3rem 0 0.25rem;
+	border-bottom: 0.1rem solid #F7F7F7;
+}
+
+.meg-list > div {
+	float: left;
+}
+
+.meg-list h3 {
+	font-size: 0.3rem;
+	color: #4A4A4A;
+	margin-bottom: 0.05rem;
+}
+
+.meg-list p {
+	font-size: 0.26rem;
+	color: #7E7C7C;
+}
+
+.head {
+	width: 1rem;
+	height: 1rem;
+}
+
+.head img {
+	width: 100%;
+	border-radius: 50%;
+}
+
+.center-meg {
+	width: 3.4rem;
+	margin: 0.16rem 0.38rem 0 0.25rem;
+}
+
+.secondary-meg {
+	width: 0.8rem;
+	margin-top: 0.16rem;
+	text-align: center;
+}
+
+.date {
+	font-size: 0.2rem;
+	color: #979797;
+	margin-bottom: 0.1rem;
+}
+
+/*页面下方的走心君文字*/
+.megZxj {
+	width: 2.13rem;
+	height: 0.75rem;
+	position: absolute;
+	bottom: 1.25rem;
+	left: 0;
+	right: 0;
+	margin: auto;
+	opacity: 0.2;
+}
+
+/*message1.html 
+* 主活动消息
+*/
+.message ul {
+	list-style: none;
+	border-top: 0.1rem solid #F7F7F7;
+}
+
+.message li {
+	width: 100%;
+	height: 1.5rem;
+	line-height: 1.4rem;
+	padding-left: 0.25rem;
+	border-bottom: 0.1rem solid #F7F7F7;
+	font-size: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.message li > div,
+.message li > p {
+	float: left;
+}
+
+.message li .head {
+	margin-top: 0.2rem;
+}
+
+.getted {
+	width: 3.6rem;
+	font-size: 0.24rem;
+	color: #4A4A4A;
+	margin-left: 0.05rem;
+}
+
+.newsTip {
+	width: 0.3rem;
+	height: 0.3rem;
+	border-radius: 50%;
+	background: #F43531;
+	color: blue;
+	font-size: 0.2rem;
+	text-align: center;
+	margin-top: 0.52rem;
+	vertical-align: center;
+}
+
+/*user.html
+* 用户菜单
+*/
+.user {
+	width: 100%;
+	padding: 0.4rem 0.2rem 0;
+	text-align: center;
+}
+
+.user img:first-child {
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 50%;
+	border: 1px solid #000;
+}
+
+.user h2 {
+	font-size: 0.3rem;
+	margin: 0.2rem auto;
+}
+
+.user p {
+	font-size: 0.2rem;
+}
+
+.user img:last-child {
+	width: 6rem;
+	margin: 0.5rem auto;
+}
+
+.divider {
+	width: 6rem;
+	margin: 0.5rem auto;
+}
+
+.user a {
+	display: block;
+	width: 1.7rem;
+	height: 0.42rem;
+	font-size: 0.26rem;
+	border: 2px solid #848484;
+	border-radius: 0.08rem;
+	margin: auto;
+	margin-bottom: 0.26rem;
+}
+
+/* personalData.html
+* 个人资料页
+*/
+.personalData {
+	background: #fff;
+	position: relative;
+}
+
+.headPortrait {
+	width: 100%;
+	height: 1.32rem;
+	line-height: 1.32rem;
+	padding: 0 0.64rem 0 0.3rem;
+}
+
+/*.headPortrait::before {*/
+	/*content: ">";*/
+	/*font-size: 0.4rem;*/
+	/*color: #9B9B9B;*/
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*right: 0.2rem;*/
+/*}*/
+
+.headPortrait span {
+	font-size: 0.26rem;
+	color: #9B9B9B;
+	float: left;
+}
+
+.headPortrait img {
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 50%;
+	border: 0.01rem solid #000;
+	margin-top: 0.26rem;
+	float: right;
+}
+
+.dataDetial {
+	width: 100%;
+	height: 0.7rem;
+	line-height: 0.7rem;
+	border: 0.01rem solid #D0D0D0;
+	padding: 0 0.64rem 0 0.3rem;
+	position: relative;
+}
+
+.dataDetial::before {
+	content: ">";
+	font-size: 0.4rem;
+	color: #9B9B9B;
+	position: absolute;
+	top: 0;
+	right: 0.2rem;
+}
+
+.nickname::before {
+	content: normal;
+}
+
+.dataDetial span:first-child {
+	font-size: 0.26rem;
+	color: #9B9B9B;
+	float: left;
+}
+
+.dataDetial span:last-child {
+	font-size: 0.26rem;
+	color: #000;
+	float: right;
+}
+
+/*修改信息弹层*/
+.changeInfo {
+	width: 100%;
+	height: calc(100% - 0.85rem);
+	background: rgba(180, 180, 180, 0.5);
+	padding: 40% 0.35rem 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: none;
+	z-index: 111;
+}
+
+.changeInfo form {
+	font-size: 0.26rem;
+	background: #fff;
+	border-radius: 0.1rem;
+	text-align: center;
+	padding: 0.2rem 0;
+}
+
+/*aboutUs.html
+* 关于我们
+*/
+.aboutUs {
+	text-align: center;
+}
+
+.aboutUs img:first-child {
+	width: 1.75rem;
+	height: 2.82rem;
+	margin: 1.3rem auto 0.4rem;
+}
+
+.aboutUs h1 {
+	font-size: 0.36rem;
+	color: #4A4A4A;
+	line-height: 0.76rem;
+}
+
+/* pushMessage.html
+*  推送设置
+*/
+.pushMessage {
+	text-align: center;
+	overflow: hidden;
+}
+
+.pushMessage h2 {
+	font-size: 0.32rem;
+	color: #4A4A4A;
+	margin-top: 0.7rem;
+}
+
+.pushMessage h2 img {
+	width: 2.12rem;
+	height: 0.4rem;
+	margin: 0.3rem auto 0.2rem;
+}
+
+.pushMessage > img {
+	width: 4.2rem;
+	height: 4.2rem;
+	margin-top: 1rem;
+}
+
+/* suggestion.html
+* 意见反馈
+*/
+.suggestion {
+	width: 100%;
+	padding-top: 0.8rem;
+	text-align: center;
+}
+
+.suggestion textarea {
+	width: 5.4rem;
+	height: 4rem;
+	line-height: 1.5;
+	font-size: 0.3rem;
+	border: 1px solid #979797;
+	border-radius: 0.1rem;
+	padding: 0.1rem 0.2rem;
+}
+
+.suggestion button {
+	width: 1.7rem;
+	height: 0.6rem;
+	font-size: 0.26rem;
+	color: #4A4A4A;
+	background: #fff;
+	border: 2px solid #848484;
+	border-radius: 0.08rem;
+}
