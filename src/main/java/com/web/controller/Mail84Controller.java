@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/activity")
 public class Mail84Controller {
-    @RequestMapping("/index")
-    	public String index(HttpServletRequest request,
-    			HttpServletResponse response) {
-    		return "/jsp/index";
-    	}
+	@RequestMapping("/index")
+		public String index(HttpServletRequest request,
+				HttpServletResponse response) {
+		request.setAttribute("flag","0");
+
+			return "/jsp/index";
+		}
 
     @RequestMapping("/aboutUs")
 		public String aboutUs(HttpServletRequest request,
