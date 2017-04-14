@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import com.web.entity.Configure;
+import com.common.Configure;
 
 /** 
  * 请求校验工具类 

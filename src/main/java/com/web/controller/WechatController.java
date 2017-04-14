@@ -1,13 +1,12 @@
 package com.web.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
 import com.utils.*;
-import com.web.entity.Configure;
+import com.common.Configure;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

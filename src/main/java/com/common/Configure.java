@@ -1,4 +1,4 @@
-package com.web.entity;
+package com.common;
 
 public class Configure {
 

@@ -3,7 +3,7 @@ package com.utils;
 import java.io.UnsupportedEncodingException;
 
 import com.alibaba.fastjson.JSONObject;
-import com.web.entity.Configure;
+import com.common.Configure;
 
 public class getAccessTokenUtil {
 	public static String getAccessToken(){

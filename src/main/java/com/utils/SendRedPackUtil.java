@@ -27,7 +27,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import com.web.entity.Configure;
+import com.common.Configure;
 
 public class SendRedPackUtil {
 
