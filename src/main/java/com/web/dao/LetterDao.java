@@ -75,7 +75,7 @@ public class LetterDao extends BaseDao {
 
         sql.append(" and receiver =:openid or sender =:openid ");
 
-        sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.letterId ");
+        sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.id ");
 
 
         sql.append(" order by s.createTime desc ");
