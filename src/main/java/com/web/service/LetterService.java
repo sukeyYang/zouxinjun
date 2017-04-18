@@ -1,5 +1,6 @@
 package com.web.service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +70,7 @@ public interface LetterService {
      *
      * @return
      */
-    String countLetterRecord(String openid);
+    BigInteger countLetterRecord(String openid);
 
 
     /**

@@ -1,5 +1,6 @@
 package com.web.service.imp;
 
+import java.math.BigInteger;
 import java.util.*;
 
 import com.web.dao.LetterDao;
@@ -57,7 +58,7 @@ public class LetterServiceImp implements LetterService {
 
 
     @Override
-    public String countLetterRecord(String openid) {
+    public BigInteger countLetterRecord(String openid) {
         return letterDao.countOpenLetterRecords(openid);
     }
 
