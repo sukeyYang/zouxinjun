@@ -17,6 +17,41 @@ public class OpenLetterRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    /**
+     * 写信人
+     */
+    @Column(name = "sender")
+    private String sender;
+
+    /**
+     * 拆信人
+     */
+    @Column(name = "receiver")
+    private String receiver;
+
+
+    /**
+     * 信件ID
+     */
+    @Column(name = "letterId")
+    private String letterId;
+
+    /**
+     * 信件发送者是否阅读该消息
+     */
+    @Column(name = "senderRead")
+    private Integer senderRead;
+
+    /**
+     * 拆信者是否阅读该消息
+     */
+    @Column(name = "receiverRead")
+    private Integer receiverRead;
+
+
+    @Column(name = "createTime")
+    private Date createTime;
+
     public int getId() {
         return id;
     }
@@ -49,12 +84,20 @@ public class OpenLetterRecord {
         this.letterId = letterId;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getSenderRead() {
+        return senderRead;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setSenderRead(Integer senderRead) {
+        this.senderRead = senderRead;
+    }
+
+    public Integer getReceiverRead() {
+        return receiverRead;
+    }
+
+    public void setReceiverRead(Integer receiverRead) {
+        this.receiverRead = receiverRead;
     }
 
     public Date getCreateTime() {
@@ -64,36 +107,6 @@ public class OpenLetterRecord {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
-    /**
-     * 写信人
-     */
-    @Column(name = "sender")
-
-    private String sender;
-
-    /**
-     * 拆信人
-     */
-    @Column(name = "receiver")
-    private String receiver;
-
-    /**
-     * 信件ID
-     */
-    @Column(name = "letterId")
-    private String letterId;
-
-    /**
-     * 消息查看状态
-     */
-    @Column(name = "status")
-    private Integer status;
-
-
-
-    @Column(name = "createTime")
-    private Date createTime;
 
 
 }
