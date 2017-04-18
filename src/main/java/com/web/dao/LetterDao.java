@@ -67,35 +67,20 @@ public class LetterDao extends BaseDao {
 
     }
 
-    public List<Map> findOpenLetterRecords(OpenLetterRecord record) {
-        Map<String, String> map = new HashMap();
+    public List<Map> findOpenLetterRecords(Map<String, String> queryCondition) {
+
         StringBuilder sql = new StringBuilder();
 
-        sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,s.createTime from  ( select t.letterId,t.sender,t.receiver,t.createTime  open_letter_record t where 1=1 ");
+        sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,DATE_FORMAT(s.createTime, '%Y-%m-%d %k:%i:%s' ) AS createtime from  ( select t.letterId,t.sender,t.receiver,t.createTime  open_letter_record t where 1=1 ");
 
-        if (StringUtils.isEmpty(record.getReceiver())) {
-            map.put("receiver", record.getReceiver());
-            sql.append(" and receiver =:receiver ");
-            if (record.getReceiverRead() != null) {
-                map.put("receiverRead", String.valueOf(record.getReceiverRead()));
-                sql.append(" and receiverRead =:receiverRead ");
-            }
-            sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.letterId ");
+        sql.append(" and receiver =:receiver or sender =:openid ");
 
-        }
-        if (StringUtils.isEmpty(record.getSender())) {
-            map.put("sender", record.getSender());
-            sql.append(" and sender =:sender ");
+        sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.letterId ");
 
-            if (record.getSender() != null) {
-                map.put("sendRead", String.valueOf(record.getSender()));
-                sql.append(" and sendRead =:sendRead ");
-            }
-            sql.append(" ) s left join user u on s.sender = u.openid left join letter r on s.letterId =  r.letterId ");
-        }
+
         sql.append(" order by s.createTime desc ");
 
-        return findResult(sql.toString(), map);
+        return findResult(sql.toString(), queryCondition);
 
     }
 

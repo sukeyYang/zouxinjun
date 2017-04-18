@@ -1,7 +1,6 @@
 package com.web.service.imp;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.web.dao.LetterDao;
 import com.web.entity.*;
@@ -56,14 +55,6 @@ public class LetterServiceImp implements LetterService {
         letterDao.save(openLetterRecord);
     }
 
-    @Override
-    public List<Map> findOpenLetterList(String openid) {
-        OpenLetterRecord record = new OpenLetterRecord();
-        record.setReceiver(openid);
-        List<Map> records = letterDao.findOpenLetterRecords(record);
-
-        return records;
-    }
 
     @Override
     public int countLetterRecord(String openid) {
@@ -81,10 +72,10 @@ public class LetterServiceImp implements LetterService {
     }
 
     @Override
-    public List<Map> findTakeAwayLetterList(String senderOpenid) {
-        OpenLetterRecord record = new OpenLetterRecord();
-        record.setSender(senderOpenid);
-        List<Map> records = letterDao.findOpenLetterRecords(record);
+    public List<Map> findLetterRecordList(String openid) {
+        Map<String, String> map = new HashMap<>();
+        map.put("openid", openid);
+        List<Map> records = letterDao.findOpenLetterRecords(map);
 
         return records;
     }
