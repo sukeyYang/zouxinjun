@@ -68,16 +68,44 @@ public interface LetterService {
      *
      * @return
      */
-    MessageRecords findOpenLetterList(String receiverOpenid);
+    List<Map> findOpenLetterList(String receiverOpenid);
 
     /**
-     * 查询b被取走的信件
+     * 统计用户未读的消息记录
+     *
+     * @param openid
+     *
+     * @return
+     */
+    int countLetterRecord(String openid);
+
+
+    /**
+     * 更新用户未读的消息记录
+     *
+     * @param openid
+     *
+     * @return
+     */
+    void updateReceiverReadStatus(String openid);
+
+    /**
+     * 更新拆信者未读消息状态
+     *
+     * @param openid
+     *
+     * @return
+     */
+    void updateSenderReadStatus(String openid);
+
+    /**
+     * 更新发信者未读消息状态
      *
      * @param senderOpenid
      *
      * @return
      */
-    MessageRecords findTakeAwayLetterList(String senderOpenid);
+    List<Map> findTakeAwayLetterList(String senderOpenid);
 
 
     /**
@@ -86,6 +114,7 @@ public interface LetterService {
      * @param userLetterRecord
      */
     void saveUserLetterRecord(UserLetterRecord userLetterRecord);
+
 
     /**
      * 保存用户已打开的信件记录

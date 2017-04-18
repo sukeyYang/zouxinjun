@@ -68,16 +68,16 @@ public class LetterDao extends BaseDao {
     }
 
     public List<Map> findOpenLetterRecords(OpenLetterRecord record) {
-        Map<String,String> map =new HashMap();
+        Map<String, String> map = new HashMap();
         StringBuilder sql = new StringBuilder();
 
         sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,s.createTime from  ( select t.letterId,t.sender,t.receiver,t.createTime  open_letter_record t where 1=1 ");
 
         if (StringUtils.isEmpty(record.getReceiver())) {
-            map.put("receiver",record.getReceiver());
+            map.put("receiver", record.getReceiver());
             sql.append(" and receiver =:receiver ");
             if (record.getReceiverRead() != null) {
-                map.put("receiverRead",String.valueOf(record.getReceiverRead()));
+                map.put("receiverRead", String.valueOf(record.getReceiverRead()));
                 sql.append(" and receiverRead =:receiverRead ");
             }
             sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.letterId ");
@@ -99,16 +99,47 @@ public class LetterDao extends BaseDao {
 
     }
 
+    public int countOpenLetterRecords(String openid) {
+        Map<String, String> map = new HashMap();
+        StringBuilder sql = new StringBuilder();
+        map.put("openid", openid);
+        sql.append("select count(*) from  open_letter_record t where ( receiverRead =:openid and receiverRead=0 ) or ( sender =:openid and sendRead=0 ) ");
+
+        return (int) getUniqueResult(sql.toString(), map);
+
+    }
+
+    public void updateSenderReadStatus(String openid) {
+        Map<String, String> map = new HashMap();
+        StringBuilder sql = new StringBuilder();
+        map.put("openid", openid);
+        sql.append("update  open_letter_record set sendRead = 1 where  sender =:openid and sendRead=0  ");
+
+        executeSql(sql.toString(), map);
+
+    }
+
+    public void updateReceiverReadStatus(String openid) {
+        Map<String, String> map = new HashMap();
+        StringBuilder sql = new StringBuilder();
+        map.put("openid", openid);
+        sql.append("update  open_letter_record set receiverRead = 1 where  receiver =:openid and receiverRead=0  ");
+
+        executeSql(sql.toString(), map);
+
+    }
+
+
     public List<UserLetterRecord> findUserLetterRecord(UserLetterRecord record) {
-           StringBuilder sql = new StringBuilder();
+        StringBuilder sql = new StringBuilder();
 
-           sql.append("From UserLetterRecord where 1=1 ");
-           if (StringUtils.isEmpty(record.getOpenid())) {
-               sql.append(" and openid =:openid ");
-           }
+        sql.append("From UserLetterRecord where 1=1 ");
+        if (StringUtils.isEmpty(record.getOpenid())) {
+            sql.append(" and openid =:openid ");
+        }
 
-           return findObjects(sql.toString(), record);
+        return findObjects(sql.toString(), record);
 
-       }
+    }
 
 }

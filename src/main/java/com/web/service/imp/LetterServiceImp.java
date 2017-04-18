@@ -57,31 +57,36 @@ public class LetterServiceImp implements LetterService {
     }
 
     @Override
-    public MessageRecords findOpenLetterList(String openid) {
+    public List<Map> findOpenLetterList(String openid) {
         OpenLetterRecord record = new OpenLetterRecord();
         record.setReceiver(openid);
         List<Map> records = letterDao.findOpenLetterRecords(record);
-        record.setReceiverRead(0);
-        List<Map> unreadRecords = letterDao.findOpenLetterRecords(record);
-        MessageRecords messageRecords = new MessageRecords();
-        messageRecords.setRecordList(records);
-        messageRecords.setUnreadRecord(unreadRecords.size());
 
-        return messageRecords;
+        return records;
     }
 
     @Override
-    public MessageRecords findTakeAwayLetterList(String senderOpenid) {
+    public int countLetterRecord(String openid) {
+        return letterDao.countOpenLetterRecords(openid);
+    }
+
+    @Override
+    public void updateReceiverReadStatus(String openid) {
+        letterDao.updateReceiverReadStatus(openid);
+    }
+
+    @Override
+    public void updateSenderReadStatus(String openid) {
+        letterDao.updateSenderReadStatus(openid);
+    }
+
+    @Override
+    public List<Map> findTakeAwayLetterList(String senderOpenid) {
         OpenLetterRecord record = new OpenLetterRecord();
         record.setSender(senderOpenid);
         List<Map> records = letterDao.findOpenLetterRecords(record);
-        record.setSenderRead(0);
-        List<Map> unreadRecords = letterDao.findOpenLetterRecords(record);
-        MessageRecords messageRecords = new MessageRecords();
-        messageRecords.setRecordList(records);
-        messageRecords.setUnreadRecord(unreadRecords.size());
 
-        return messageRecords;
+        return records;
     }
 
     @Override
