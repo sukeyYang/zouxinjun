@@ -71,7 +71,7 @@ public class LetterDao extends BaseDao {
 
         StringBuilder sql = new StringBuilder();
 
-        sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,DATE_FORMAT(s.createTime, '%Y-%m-%d %k:%i:%s' ) AS createtime from  ( select t.letterId,t.sender,t.receiver,t.createTime  open_letter_record t where 1=1 ");
+        sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,DATE_FORMAT(s.createTime, '%Y-%m-%d %k:%i:%s' ) AS createtime from  ( select t.letterId,t.sender,t.receiver,t.createTime from open_letter_record t where 1=1 ");
 
         sql.append(" and receiver =:openid or sender =:openid ");
 
