@@ -47,6 +47,12 @@ public class Letter {
     @Column(name = "headImage")
     private String headImage;
 
+    /**
+     * 电话
+     */
+    @Column(name = "phone")
+    private String phone;
+
 
     /**
      * 信件长度
@@ -148,5 +154,13 @@ public class Letter {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
