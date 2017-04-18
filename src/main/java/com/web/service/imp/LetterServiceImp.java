@@ -57,7 +57,7 @@ public class LetterServiceImp implements LetterService {
 
 
     @Override
-    public int countLetterRecord(String openid) {
+    public String countLetterRecord(String openid) {
         return letterDao.countOpenLetterRecords(openid);
     }
 

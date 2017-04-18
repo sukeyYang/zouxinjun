@@ -69,7 +69,7 @@ public interface LetterService {
      *
      * @return
      */
-    int countLetterRecord(String openid);
+    String countLetterRecord(String openid);
 
 
     /**

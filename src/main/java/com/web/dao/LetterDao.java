@@ -1,5 +1,6 @@
 package com.web.dao;
 
+import java.math.BigInteger;
 import java.util.*;
 
 import com.common.BaseDao;
@@ -84,13 +85,13 @@ public class LetterDao extends BaseDao {
 
     }
 
-    public int countOpenLetterRecords(String openid) {
+    public String countOpenLetterRecords(String openid) {
         Map<String, String> map = new HashMap();
         StringBuilder sql = new StringBuilder();
         map.put("openid", openid);
         sql.append("select count(*) from  open_letter_record t where ( receiverRead =:openid and receiverRead=0 ) or ( sender =:openid and senderRead=0 ) ");
 
-        return (int) getUniqueResult(sql.toString(), map);
+        return (String) getUniqueResult(sql.toString(), map);
 
     }
 
