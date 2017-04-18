@@ -8,7 +8,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "open_letter_record")
+@Table(name = "user_letter_record")
 public class UserLetterRecord {
 
     @Id
@@ -27,13 +27,13 @@ public class UserLetterRecord {
      * 已写信的数量
      */
     @Column(name = "letterNumber")
-    private String letterNumber;
+    private int letterNumber;
 
     /**
      * 打开信的数量
      */
     @Column(name = "openTime")
-    private String openTime;
+    private int openTime;
 
 
     @Column(name = "createTime")
@@ -56,19 +56,19 @@ public class UserLetterRecord {
         this.openid = openid;
     }
 
-    public String getLetterNumber() {
+    public int getLetterNumber() {
         return letterNumber;
     }
 
-    public void setLetterNumber(String letterNumber) {
+    public void setLetterNumber(int letterNumber) {
         this.letterNumber = letterNumber;
     }
 
-    public String getOpenTime() {
+    public int getOpenTime() {
         return openTime;
     }
 
-    public void setOpenTime(String openTime) {
+    public void setOpenTime(int openTime) {
         this.openTime = openTime;
     }
 
