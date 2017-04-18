@@ -3,8 +3,7 @@ package com.web.dao;
 import java.util.*;
 
 import com.common.BaseDao;
-import com.web.entity.Letter;
-import com.web.entity.OpenLetterRecord;
+import com.web.entity.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -88,8 +87,8 @@ public class LetterDao extends BaseDao {
             map.put("sender", record.getSender());
             sql.append(" and sender =:sender ");
 
-            if (record.getSendRead() != null) {
-                map.put("sendRead", String.valueOf(record.getSendRead()));
+            if (record.getSender() != null) {
+                map.put("sendRead", String.valueOf(record.getSender()));
                 sql.append(" and sendRead =:sendRead ");
             }
             sql.append(" ) s left join user u on s.sender = u.openid left join letter r on s.letterId =  r.letterId ");
@@ -99,5 +98,17 @@ public class LetterDao extends BaseDao {
         return findResult(sql.toString(), map);
 
     }
+
+    public List<UserLetterRecord> findUserLetterRecord(UserLetterRecord record) {
+           StringBuilder sql = new StringBuilder();
+
+           sql.append("From UserLetterRecord where 1=1 ");
+           if (StringUtils.isEmpty(record.getOpenid())) {
+               sql.append(" and openid =:openid ");
+           }
+
+           return findObjects(sql.toString(), record);
+
+       }
 
 }

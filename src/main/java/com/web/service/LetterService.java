@@ -59,7 +59,7 @@ public interface LetterService {
      *
      * @param openLetterRecord
      */
-    void saveOpenLetterService(OpenLetterRecord openLetterRecord);
+    void saveOpenLetter(OpenLetterRecord openLetterRecord);
 
     /**
      * 查询用户已打开的信件记录
@@ -78,6 +78,21 @@ public interface LetterService {
      * @return
      */
     MessageRecords findTakeAwayLetterList(String senderOpenid);
+
+
+    /**
+     * 保存用户已打开的信件记录
+     *
+     * @param userLetterRecord
+     */
+    void saveUserLetterRecord(UserLetterRecord userLetterRecord);
+
+    /**
+     * 保存用户已打开的信件记录
+     *
+     * @param openid
+     */
+    UserLetterRecord findUserLetterRecord(String openid);
 
 
 }
