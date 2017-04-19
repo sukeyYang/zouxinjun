@@ -26,7 +26,7 @@ public class User {
     private String nickname;
 
     @Column(name = "sex")
-    private String sex;
+    private Integer sex;
 
     @Column(name = "language")
     private String language;
@@ -90,12 +90,12 @@ public class User {
         return this.nickname;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public Integer getSex() {
+        return sex;
     }
 
-    public String getSex() {
-        return this.sex;
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public void setLanguage(String language) {
