@@ -168,4 +168,12 @@ public class Letter {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
 }
