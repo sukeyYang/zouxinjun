@@ -17,11 +17,11 @@ public class UserDao extends BaseDao {
         StringBuilder sql = new StringBuilder();
 
         sql.append("From User where 1=1 ");
-        if (StringUtils.isEmpty(user.getOpenid())) {
+        if (!StringUtils.isEmpty(user.getOpenid())) {
             sql.append(" and openid =:openid ");
         }
 
-        if (StringUtils.isEmpty(user.getPhone())) {
+        if (!StringUtils.isEmpty(user.getPhone())) {
             sql.append(" and phone =:phone ");
         }
 
