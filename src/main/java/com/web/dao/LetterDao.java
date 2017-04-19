@@ -85,6 +85,38 @@ public class LetterDao extends BaseDao {
 
     }
 
+    public List<Map> findOpenLetterRecords(OpenLetterRecord record) {
+            Map<String,String> map =new HashMap();
+            StringBuilder sql = new StringBuilder();
+
+            sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,DATE_FORMAT(s.createTime, '%Y-%m-%d %k:%i:%s' ) AS createtime from  ( select t.letterId,t.sender,t.receiver,t.createTime  open_letter_record t where 1=1 ");
+
+            if (!StringUtils.isEmpty(record.getReceiver())) {
+                map.put("receiver",record.getReceiver());
+                sql.append(" and receiver =:receiver ");
+                if (record.getReceiverRead() != null) {
+                    map.put("receiverRead",String.valueOf(record.getReceiverRead()));
+                    sql.append(" and receiverRead =:receiverRead ");
+                }
+                sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.letterId ");
+
+            }
+            if (!StringUtils.isEmpty(record.getSender())) {
+                map.put("sender", record.getSender());
+                sql.append(" and sender =:sender ");
+
+                if (record.getSender() != null) {
+                    map.put("sendRead", String.valueOf(record.getSender()));
+                    sql.append(" and sendRead =:sendRead ");
+                }
+                sql.append(" ) s left join user u on s.sender = u.openid left join letter r on s.letterId =  r.letterId ");
+            }
+            sql.append(" order by s.createTime desc ");
+
+            return findResult(sql.toString(), map);
+
+        }
+
     public BigInteger countOpenLetterRecords(String openid) {
         Map<String, String> map = new HashMap();
         StringBuilder sql = new StringBuilder();
@@ -120,7 +152,7 @@ public class LetterDao extends BaseDao {
         StringBuilder sql = new StringBuilder();
 
         sql.append("From UserLetterRecord where 1=1 ");
-        if (StringUtils.isEmpty(record.getOpenid())) {
+        if (!StringUtils.isEmpty(record.getOpenid())) {
             sql.append(" and openid =:openid ");
         }
 

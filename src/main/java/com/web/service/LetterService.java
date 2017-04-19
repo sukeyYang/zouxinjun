@@ -108,6 +108,24 @@ public interface LetterService {
      */
     void saveUserLetterRecord(UserLetterRecord userLetterRecord);
 
+    /**
+        * 查询用户已打开的信件记录
+        *
+        * @param receiverOpenid
+        *
+        * @return
+        */
+    List<Map> findOpenLetterList(String receiverOpenid);
+
+       /**
+        * 查询b被取走的信件
+        *
+        * @param senderOpenid
+        *
+        * @return
+        */
+       List<Map> findTakeAwayLetterList(String senderOpenid);
+
 
     /**
      * 保存用户已打开的信件记录

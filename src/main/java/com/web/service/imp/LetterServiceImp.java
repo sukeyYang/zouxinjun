@@ -87,6 +87,20 @@ public class LetterServiceImp implements LetterService {
     }
 
     @Override
+    public List<Map> findOpenLetterList(String receiverOpenid) {
+        OpenLetterRecord openLetterRecord = new OpenLetterRecord();
+        openLetterRecord.setReceiver(receiverOpenid);
+        return letterDao.findOpenLetterRecords(openLetterRecord);
+    }
+
+    @Override
+    public List<Map> findTakeAwayLetterList(String senderOpenid) {
+        OpenLetterRecord openLetterRecord = new OpenLetterRecord();
+        openLetterRecord.setSender(senderOpenid);
+        return letterDao.findOpenLetterRecords(openLetterRecord);
+    }
+
+    @Override
     public UserLetterRecord findUserLetterRecord(String openid) {
         UserLetterRecord record = new UserLetterRecord();
 
