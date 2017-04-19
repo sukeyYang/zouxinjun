@@ -98,7 +98,7 @@ public class LetterDao extends BaseDao {
                     map.put("receiverRead",String.valueOf(record.getReceiverRead()));
                     sql.append(" and receiverRead =:receiverRead ");
                 }
-                sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.letterId ");
+                sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.id ");
 
             }
             if (!StringUtils.isEmpty(record.getSender())) {
