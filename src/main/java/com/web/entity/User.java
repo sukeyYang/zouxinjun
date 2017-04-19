@@ -50,6 +50,10 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "wechatid")
+    private String wechatId;
+
+
     @Column(name = "school")
     private String school;
 
@@ -172,5 +176,13 @@ public class User {
 
     public void setSchool(String school) {
         this.school = school;
+    }
+
+    public String getWechatId() {
+        return wechatId;
+    }
+
+    public void setWechatId(String wechatId) {
+        this.wechatId = wechatId;
     }
 }

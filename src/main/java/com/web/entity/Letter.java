@@ -53,6 +53,11 @@ public class Letter {
     @Column(name = "phone")
     private String phone;
 
+    /**
+     * 学校
+     */
+    @Column(name = "school")
+    private String school;
 
     /**
      * 信件长度
