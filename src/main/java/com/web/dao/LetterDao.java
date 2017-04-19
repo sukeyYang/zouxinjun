@@ -106,8 +106,8 @@ public class LetterDao extends BaseDao {
                 sql.append(" and sender =:sender ");
 
                 if (record.getSender() != null) {
-                    map.put("sendRead", String.valueOf(record.getSender()));
-                    sql.append(" and sendRead =:sendRead ");
+                    map.put("senderRead", String.valueOf(record.getSenderRead()));
+                    sql.append(" and senderRead =:senderRead ");
                 }
                 sql.append(" ) s left join user u on s.sender = u.openid left join letter r on s.letterId =  r.id ");
             }
