@@ -32,7 +32,7 @@ public class LetterDao extends BaseDao {
         }
 
         if (letter.getGender() != null) {
-            sql.append(" and gender =:gender ");
+            sql.append(" and gender !=:gender ");
         }
 
         sql.append(" order by readTime asc, createtime desc");
