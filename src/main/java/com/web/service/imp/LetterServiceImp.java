@@ -46,6 +46,7 @@ public class LetterServiceImp implements LetterService {
             Letter userLetter = userLetters.get(0);
             letter.setGender(userLetter.getGender());
             letter.setLength(userLetter.getLength());
+            letter.setOpenid(null);
         }
 
         return letterDao.findLetters(letter, page, pageSize);
