@@ -125,7 +125,7 @@ public class LetterDao extends BaseDao {
         Map<String, String> map = new HashMap();
         StringBuilder sql = new StringBuilder();
         map.put("openid", openid);
-        sql.append("select count(*) from  open_letter_record t where ( receiverRead =:openid and receiverRead=0 ) or ( sender =:openid and senderRead=0 ) ");
+        sql.append("select count(*) from  open_letter_record t where ( receiver =:openid and receiverRead=0 ) or ( sender =:openid and senderRead=0 ) ");
 
         return (BigInteger) getUniqueResult(sql.toString(), map);
 
