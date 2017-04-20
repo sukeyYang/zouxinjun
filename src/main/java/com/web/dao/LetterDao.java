@@ -102,7 +102,7 @@ public class LetterDao extends BaseDao {
                 map.put("receiverRead", String.valueOf(record.getReceiverRead()));
                 sql.append(" and receiverRead =:receiverRead ");
             }
-            sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.id ");
+            sql.append(" ) s left join user u on s.sender = u.openid left join letter r on s.letterId =  r.id ");
 
         }
         if (!StringUtils.isEmpty(record.getSender())) {
@@ -113,7 +113,7 @@ public class LetterDao extends BaseDao {
                 map.put("senderRead", String.valueOf(record.getSenderRead()));
                 sql.append(" and senderRead =:senderRead ");
             }
-            sql.append(" ) s left join user u on s.sender = u.openid left join letter r on s.letterId =  r.id ");
+            sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.id ");
         }
         sql.append(" order by s.createTime desc ");
 
