@@ -131,7 +131,7 @@ public class LetterDao extends BaseDao {
         Map<String, String> map = new HashMap();
         StringBuilder sql = new StringBuilder();
         map.put("openid", openid);
-        sql.append("update  open_letter_record set sendRead = 1 where  sender =:openid and sendRead=0  ");
+        sql.append("update  open_letter_record set senderRead = 1 where  sender =:openid and senderRead=0  ");
 
         executeSql(sql.toString(), map);
 
