@@ -34,6 +34,8 @@ public class LetterDao extends BaseDao {
         if (letter.getGender() != null) {
             sql.append(" and gender !=:gender ");
         }
+        sql.append("and id not in (select letterId from OpenLetterRecord where receiver =  ");
+        sql.append(letter.getOpenid());
 
         sql.append(" order by readTime asc, createtime desc");
 
@@ -88,36 +90,36 @@ public class LetterDao extends BaseDao {
     }
 
     public List<Map> findOpenLetterRecords(OpenLetterRecord record) {
-            Map<String,String> map =new HashMap();
-            StringBuilder sql = new StringBuilder();
+        Map<String, String> map = new HashMap();
+        StringBuilder sql = new StringBuilder();
 
-            sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,s.receiverRead,s.senderRead,DATE_FORMAT(s.createTime, '%Y-%m-%d' ) AS createtime from  ( select t.letterId,t.sender,t.receiver,t.receiverRead,t.senderRead,t.createTime from open_letter_record t where 1=1 ");
+        sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,s.receiverRead,s.senderRead,DATE_FORMAT(s.createTime, '%Y-%m-%d' ) AS createtime from  ( select t.letterId,t.sender,t.receiver,t.receiverRead,t.senderRead,t.createTime from open_letter_record t where 1=1 ");
 
-            if (!StringUtils.isEmpty(record.getReceiver())) {
-                map.put("receiver",record.getReceiver());
-                sql.append(" and receiver =:receiver ");
-                if (record.getReceiverRead() != null) {
-                    map.put("receiverRead",String.valueOf(record.getReceiverRead()));
-                    sql.append(" and receiverRead =:receiverRead ");
-                }
-                sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.id ");
-
+        if (!StringUtils.isEmpty(record.getReceiver())) {
+            map.put("receiver", record.getReceiver());
+            sql.append(" and receiver =:receiver ");
+            if (record.getReceiverRead() != null) {
+                map.put("receiverRead", String.valueOf(record.getReceiverRead()));
+                sql.append(" and receiverRead =:receiverRead ");
             }
-            if (!StringUtils.isEmpty(record.getSender())) {
-                map.put("sender", record.getSender());
-                sql.append(" and sender =:sender ");
-
-                if (record.getSender() != null) {
-                    map.put("senderRead", String.valueOf(record.getSenderRead()));
-                    sql.append(" and senderRead =:senderRead ");
-                }
-                sql.append(" ) s left join user u on s.sender = u.openid left join letter r on s.letterId =  r.id ");
-            }
-            sql.append(" order by s.createTime desc ");
-
-            return findResult(sql.toString(), map);
+            sql.append(" ) s left join user u on s.receiver = u.openid left join letter r on s.letterId =  r.id ");
 
         }
+        if (!StringUtils.isEmpty(record.getSender())) {
+            map.put("sender", record.getSender());
+            sql.append(" and sender =:sender ");
+
+            if (record.getSender() != null) {
+                map.put("senderRead", String.valueOf(record.getSenderRead()));
+                sql.append(" and senderRead =:senderRead ");
+            }
+            sql.append(" ) s left join user u on s.sender = u.openid left join letter r on s.letterId =  r.id ");
+        }
+        sql.append(" order by s.createTime desc ");
+
+        return findResult(sql.toString(), map);
+
+    }
 
     public BigInteger countOpenLetterRecords(String openid) {
         Map<String, String> map = new HashMap();
