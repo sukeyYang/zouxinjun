@@ -109,7 +109,7 @@ public class LetterDao extends BaseDao {
             map.put("sender", record.getSender());
             sql.append(" and sender =:sender ");
 
-            if (record.getSender() != null) {
+            if (record.getSenderRead() != null) {
                 map.put("senderRead", String.valueOf(record.getSenderRead()));
                 sql.append(" and senderRead =:senderRead ");
             }
