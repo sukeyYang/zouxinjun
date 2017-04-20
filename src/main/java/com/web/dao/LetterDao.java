@@ -89,7 +89,7 @@ public class LetterDao extends BaseDao {
             Map<String,String> map =new HashMap();
             StringBuilder sql = new StringBuilder();
 
-            sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,s.receiverRead,s.senderRead,DATE_FORMAT(s.createTime, '%Y-%m-%d %k:%i:%s' ) AS createtime from  ( select t.letterId,t.sender,t.receiver,t.receiverRead,t.senderRead,t.createTime from open_letter_record t where 1=1 ");
+            sql.append("select u.headimgurl,u.nickname,r.title,r.content,r.phone,s.receiverRead,s.senderRead,DATE_FORMAT(s.createTime, '%Y-%m-%d' ) AS createtime from  ( select t.letterId,t.sender,t.receiver,t.receiverRead,t.senderRead,t.createTime from open_letter_record t where 1=1 ");
 
             if (!StringUtils.isEmpty(record.getReceiver())) {
                 map.put("receiver",record.getReceiver());
