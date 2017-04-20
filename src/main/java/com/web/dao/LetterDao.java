@@ -18,7 +18,7 @@ public class LetterDao extends BaseDao {
         StringBuilder sql = new StringBuilder();
 
         sql.append("From Letter where 1=1 ");
-        if (StringUtils.isEmpty(letter.getOpenid())) {
+        if (!StringUtils.isEmpty(letter.getOpenid())) {
             sql.append(" and openid =:openid ");
         }
 
@@ -34,10 +34,10 @@ public class LetterDao extends BaseDao {
         if (letter.getGender() != null) {
             sql.append(" and gender !=:gender ");
         }
-        sql.append("and id not in (select letterId from OpenLetterRecord where receiver =  ");
-        sql.append(letter.getOpenid());
+        sql.append("and id not in (select letterId from OpenLetterRecord where receiver = :openid ) ");
 
-        sql.append(") order by readTime asc, createtime desc");
+
+        sql.append(" order by readTime asc, createtime desc");
 
         return findObjects(sql.toString(), letter, page, pageSize);
 
@@ -47,7 +47,7 @@ public class LetterDao extends BaseDao {
         StringBuilder sql = new StringBuilder();
 
         sql.append("From Letter where 1=1 ");
-        if (StringUtils.isEmpty(letter.getOpenid())) {
+        if (!StringUtils.isEmpty(letter.getOpenid())) {
             sql.append(" and openid =:openid ");
         }
 
@@ -64,9 +64,9 @@ public class LetterDao extends BaseDao {
             sql.append(" and gender !=:gender ");
         }
 
-        sql.append("and id not in (select letterId from OpenLetterRecord where receiver =  ");
+        sql.append("and id not in (select letterId from OpenLetterRecord where receiver =:openid ) ");
         sql.append(letter.getOpenid());
-        sql.append(") order by readTime asc, createtime desc");
+        sql.append(" order by readTime asc, createtime desc");
 
         return findObjects(sql.toString(), letter);
 
