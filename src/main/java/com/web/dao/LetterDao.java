@@ -59,8 +59,10 @@ public class LetterDao extends BaseDao {
         }
 
         if (letter.getGender() != null) {
-            sql.append(" and gender =:gender ");
+            sql.append(" and gender !=:gender ");
         }
+
+        sql.append("and id not in (select letterId from open_letter_record where receiver = :openid) ");
 
         sql.append(" order by readTime asc, createtime desc");
 
