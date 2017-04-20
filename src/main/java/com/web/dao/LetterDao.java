@@ -62,9 +62,9 @@ public class LetterDao extends BaseDao {
             sql.append(" and gender !=:gender ");
         }
 
-        sql.append("and id not in (select letterId from open_letter_record where receiver = :openid) ");
-
-        sql.append(" order by readTime asc, createtime desc");
+        sql.append("and id not in (select letterId from open_letter_record where receiver =  ");
+        sql.append(letter.getOpenid());
+        sql.append(") order by readTime asc, createtime desc");
 
         return findObjects(sql.toString(), letter);
 
