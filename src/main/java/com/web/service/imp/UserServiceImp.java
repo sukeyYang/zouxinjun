@@ -7,10 +7,12 @@ import com.web.dao.UserDao;
 import com.web.entity.User;
 import com.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by sukey on 2017/4/14.
  */
+@Service
 public class UserServiceImp implements UserService {
 
     @Autowired
