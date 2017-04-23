@@ -32,6 +32,8 @@ public class WechatController {
     public String authorize(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String code = request.getParameter("code");
         String state = request.getParameter("state");
+        state=state.replaceAll("%2F","/");
+
         String get_access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + Configure.WXAppid + "&secret=" + Configure.AppSecret + "&code=" + code + "&grant_type=authorization_code";
         String json = HttpUtil.getUrl(get_access_token_url);
 
