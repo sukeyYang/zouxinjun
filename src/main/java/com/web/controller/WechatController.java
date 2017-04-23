@@ -46,7 +46,7 @@ public class WechatController {
         JSONObject jsonObject = JSONObject.parseObject(json);
         String openid = jsonObject.getString("openid");
         request.getSession().setAttribute("openid", openid);
-        return "redirect:/" +state;
+        return "redirect:" +state;
     }
 
     @RequestMapping(value = "/getWeiXinJsConf", method = RequestMethod.POST)
