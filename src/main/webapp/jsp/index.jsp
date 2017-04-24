@@ -40,11 +40,11 @@
 <div class="container">
   <!-- 首页 -->
   <div class="index">
-    <div href="" class="indexEntry1">
+    <div class="indexEntry1">
       <p class="activityTitle">查令十字街84号</p>
       <p class="activityDesc">流至此的信里，是否有着一个有趣的灵魂。</p>
     </div>
-    <div href="" class="indexEntry2">
+    <div class="indexEntry2">
       <p class="activityTitle">青春就是要搞事</p>
       <p class="activityDesc">青春君们，睡什么，起来搞事？</p>
     </div>
@@ -59,23 +59,24 @@
         <span class="cSpan rz45"></span>
         <span class="cSpan rz-45"></span>
       </div>
-      <img src="<%=basePath%>/images/index-img1.jpg" align="center">
-      <p class="activityDetail">千万千万群无群无群无群无多撒奥奥奥奥奥奥多千万千万群无群无群无群无多撒奥奥奥奥奥奥多</p>
-      <p>活动规则：<span>ASD</span></p>
-      <p>活动时间：<span>2017/4/1</span></p>
-      <a href="mainActivity" class="btn" style="font-weight: bold;">立即参加</a>
+      <img src="<%=basePath%>/images/index-img3.jpg" align="center">
+      <p class="activityDetail">写一封寄宿心情与愿望的信件，漂流至世界某个角落的另一个有趣灵魂，从未相见，却见字如面。</p>
+      <p>活动规则：<span>每写一封信，就拥有拆开一封信件的机会，拆开信件之后可以获得彼此的联系方式哦 </span></p>
+      <p>活动时间：<span>2017年5月起</span></p>
+      <a href="mainActivity" class="btn"
+         style="font-weight: bold;vertical-align: text-top;">立即参加</a>
     </div>
     <div class="activity2" style="display:none">
       <h2>活动详情</h2>
-      <div class="endBtn">
-        <span></span>
-        <span></span>
+      <div class="closeBtn cbPos">
+        <span class="cSpan rz45"></span>
+        <span class="cSpan rz-45"></span>
       </div>
-      <img src="<%=basePath%>/images/index-img2.jpg">
-      <p class="activityDetail">千万千万群无群无群无群无多撒奥奥奥奥奥奥多千万千万群无群无群无群无多撒奥奥奥奥奥奥多</p>
-      <p>活动规则：<span>ASD</span></p>
-      <p>活动时间：<span>2017/4/1</span></p>
-      <a class="btn" style="font-weight: bold;">暂未开放</a>
+      <img src="<%=basePath%>/images/index-img4.jpg">
+      <p class="activityDetail">
+        同校同城的小伙伴可以发起自己的走心活动，其他小伙伴可以报名参与，线下互动，可以是周末约郊游，晚上约跑步，期末约自习等等，不限创意哦。</p>
+      <p>活动规则：<span>发布者活动的走心君宝宝要填写好联系方式，通过审核之后，即可发布</span></p>
+      <a class="btn" style="font-weight: bold;vertical-align: text-top;">暂未开放</a>
     </div>
   </div>
   <c:if test="${isNew == 1}">
@@ -86,12 +87,8 @@
       <h2>请完善下列信息</h2>
       <form>
         <div class="input-item">
-          学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校：<input type="text"
-                                                              name="college"
-                                                              placeholder="--请选择--"
-                                                              readonly
-                                                              id="school-name"
-                                                              onclick="pop()">
+          学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校：
+          <input type="text" name="college" placeholder="--请选择--" readonly id="school-name" onclick="pop()">
         </div>
         <div class="input-item">
           手机号码：<input type="number" name="phonenumber">

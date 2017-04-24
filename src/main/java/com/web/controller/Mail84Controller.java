@@ -31,7 +31,6 @@ public class Mail84Controller {
     public String index(HttpServletRequest request,
                         HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         User someone = userService.findUserByOpenid(openid);
         if (someone == null) {
             someone = new User();
@@ -59,7 +58,6 @@ public class Mail84Controller {
     public String saveUserInfo(HttpServletRequest request,
                                HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         User someone = userService.findUserByOpenid(openid);
         String school = request.getParameter("school");
         String phone = request.getParameter("phone");
@@ -81,7 +79,6 @@ public class Mail84Controller {
     public String mainActivity(HttpServletRequest request,
                                HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         //准备加载一个letterlist
         List<Letter> letterList = letterService.findMatchCaseLetter(openid, 1, 10);
         request.setAttribute("letterList", letterList);
@@ -113,7 +110,6 @@ public class Mail84Controller {
         String p = request.getParameter("page");
         int page = Integer.parseInt(p);
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         List<Letter> letterList = letterService.findMatchCaseLetter(openid, page, 10);
         return letterList;
     }
@@ -123,7 +119,6 @@ public class Mail84Controller {
     @ResponseBody
     public String saveLetter(HttpServletRequest request, HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         Letter letter = new Letter();
@@ -152,7 +147,6 @@ public class Mail84Controller {
     @ResponseBody
     public String openLetter(HttpServletRequest request, HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         String sender = request.getParameter("sender");
 //        User someone = userService.findUserByOpenid(sender);
 //        String senderName = someone.getNickname();
@@ -178,7 +172,6 @@ public class Mail84Controller {
     public String message(HttpServletRequest request,
                           HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         request.setAttribute("userRecord", letterService.countLetterRecord(openid));
         return "/jsp/message";
     }
@@ -187,7 +180,6 @@ public class Mail84Controller {
     public String mainMessage(HttpServletRequest request,
                               HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         //用户领取信件的记录
         List<Map> openLetterList = letterService.findOpenLetterList(openid);
         request.setAttribute("openLetterList", openLetterList);
@@ -204,10 +196,9 @@ public class Mail84Controller {
     public String personalData(HttpServletRequest request,
                                HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456";
         User someone = userService.findUserByOpenid(openid);
         request.setAttribute("headimgurl", someone.getHeadimgurl());
-        request.setAttribute("nickName", someone.getNickname());
+        request.setAttribute("nickname", someone.getNickname());
         request.setAttribute("school", someone.getSchool());
         request.setAttribute("phone", someone.getPhone());
         return "/jsp/personalData";
@@ -219,7 +210,6 @@ public class Mail84Controller {
     public String changeUserInfo(HttpServletRequest request,
                                  HttpServletResponse response) {
         String openid = (String) request.getSession().getAttribute("openid");
-        openid = "456 ";
         User someone = userService.findUserByOpenid(openid);
         String school = request.getParameter("school");
         String phone = request.getParameter("phone");
@@ -248,6 +238,11 @@ public class Mail84Controller {
     @RequestMapping("/user")
     public String user(HttpServletRequest request,
                        HttpServletResponse response) {
+        String openid = (String) request.getSession().getAttribute("openid");
+        User someone = userService.findUserByOpenid(openid);
+        request.setAttribute("headimgurl", someone.getHeadimgurl());
+        request.setAttribute("nickname", someone.getNickname());
+        request.setAttribute("school", someone.getSchool());
         return "/jsp/user";
     }
 

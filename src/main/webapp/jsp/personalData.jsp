@@ -45,7 +45,7 @@
     </div>
     <div class="dataDetial nickname clearfix">
       <span>昵称</span>
-      <span>${nickName}</span>
+      <span>${nickname}</span>
     </div>
     <div class="dataDetial school clearfix">
       <span>学校</span>

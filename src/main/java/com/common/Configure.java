@@ -15,12 +15,12 @@ public class Configure {
     /**
      * APPID
      */
-    public static final String WXAppid = "wxd210fa2c202d0ea0";
+    public static final String WXAppid = "wx9b7cb09d045021b0";
 
     /**
      * AppSecret
      */
-    public static final String AppSecret = "5392d1a3b0e403a77af8ef5fff3c8c3f";
+    public static final String AppSecret = "7cb2632b248be1d415dcefa2e460cc11";
 
 
     /**

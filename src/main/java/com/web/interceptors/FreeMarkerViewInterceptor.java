@@ -44,12 +44,11 @@ public class FreeMarkerViewInterceptor implements HandlerInterceptor {
         String path = request.getServletPath();
         path = path.replaceAll("/", "%2F");
 
-        System.out.println("openid" + name);
         if (!"".equals(name)) {
             return true;
         } else {
             System.out.println(request.getContextPath());
-            response.sendRedirect(request.getContextPath() + "/login/"+path);
+            response.sendRedirect(request.getContextPath() + "/wechat/login");
             return false;
         }
     }

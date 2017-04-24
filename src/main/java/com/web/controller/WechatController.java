@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.alibaba.fastjson.JSONObject;
 import com.utils.*;
 import com.common.Configure;
+import com.web.entity.User;
+import com.web.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,36 +20,72 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/wechat")
 public class WechatController {
 
-    @RequestMapping(value = "/login/{refer_url}")
-    public String login(@PathVariable(value="refer_url") String refer_url,HttpServletRequest request) {
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/login")
+    public String login(HttpServletRequest request) {
         String request_url = request.getRequestURL().toString();
-        String redirect_url = request_url.substring(0,request_url.indexOf("login")) + "authorize";
-        System.out.println(refer_url);
+        String redirect_url = request_url.substring(0, request_url.indexOf("login")) + "authorize";
         redirect_url = redirect_url.replace(":", "%3A").replaceAll("/", "%2F");
-        String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + Configure.WXAppid + "&redirect_uri=" + redirect_url + "&response_type=code&scope=snsapi_base&state="+refer_url+
-        "#wechat_redirect";
+        String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + Configure.WXAppid + "&redirect_uri=" + redirect_url + "&response_type=code&scope=snsapi_userinfo&state=123" +
+            "#wechat_redirect";
         return "redirect:" + url;
     }
 
     @RequestMapping(value = "/authorize")
     public String authorize(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String code = request.getParameter("code");
-        String state = request.getParameter("state");
-        state=state.replaceAll("%2F","/");
+
 
         String get_access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + Configure.WXAppid + "&secret=" + Configure.AppSecret + "&code=" + code + "&grant_type=authorization_code";
         String json = HttpUtil.getUrl(get_access_token_url);
 
         try {
             json = new String(json.getBytes("ISO-8859-1"), "utf-8");
+
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         JSONObject jsonObject = JSONObject.parseObject(json);
         String openid = jsonObject.getString("openid");
+        String userInfoUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=" + jsonObject.getString("access_token") + "&openid=" + openid + "&lang=zh_CN";
+        String uInfo = HttpUtil.getUrl(userInfoUrl);
+        System.out.println(uInfo);
+        try {
+            uInfo = new String(uInfo.getBytes("ISO-8859-1"), "utf-8");
+
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        JSONObject userInfo = JSONObject.parseObject(uInfo);
+
+        User user = userService.findUserByOpenid(openid);
+        String nickname = userInfo.getString("nickname");
+        int sex = Integer.parseInt(String.valueOf(userInfo.get("sex")));
+        String province = userInfo.getString("province");
+        String city = userInfo.getString("city");
+        String country = userInfo.getString("country");
+        String headimgurl = userInfo.getString("headimgurl");
+
+        if (user == null) {
+            user = new User();
+            user.setOpenid(openid);
+            user.setNickname(nickname);
+            user.setHeadimgurl(headimgurl);
+            user.setSex(sex);
+            user.setProvince(province);
+            user.setCity(city);
+            user.setCountry(country);
+        } else {
+            user.setNickname(nickname);
+            user.setHeadimgurl(headimgurl);
+        }
+        userService.saveUser(user);
         request.getSession().setAttribute("openid", openid);
-        return "redirect:" +state;
+        return "redirect:/activity/index";
     }
 
     @RequestMapping(value = "/getWeiXinJsConf", method = RequestMethod.POST)

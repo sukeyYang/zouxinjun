@@ -203,12 +203,12 @@ a {
 
 .indexEntry1 {
   margin-top: 0.4rem;
-  background: url(../images/index-img1.jpg) 0 0 / 100% 100%;
+  background: url(../images/index-img3.jpg) 0 0 / 100% 100%;
 }
 
 .indexEntry2 {
   margin-top: 0.6rem;
-  background: url(../images/index-img2.jpg) 0 0 / 100% 100%;
+  background: url(../images/index-img4.jpg) 0 0 / 100% 100%;
 }
 
 .activityTitle {
@@ -271,7 +271,7 @@ a {
 }
 
 .indexLayer .activityDetail {
-  margin: 0.27rem 0 0.3rem;
+  margin: 0.27rem 0 0.25rem;
 }
 
 .indexLayer img {
@@ -615,7 +615,7 @@ a {
 .payAttention img {
   width: 4rem;
   height: 4rem;
-  margin: 0.15rem auto;
+  margin: 0.05rem auto;
 }
 
 /* message.html

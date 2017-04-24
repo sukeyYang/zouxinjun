@@ -35,9 +35,9 @@
 	</div>
 
 	<div class="user">
-		<img src="<%=basePath%>/images/head1.jpg">
-		<h2>走心君</h2>
-		<p>华东师范大学</p>
+		<img src="${headimgurl}">
+		<h2>${nickname}</h2>
+		<p>${school}</p>
 		<img src="<%=basePath%>/images/divider.jpg" class="divider">
 		<a href="personalData">个人资料</a>
 		<a href="pushMessage" style="margin-bottom:0.79rem;">推送设置</a>
