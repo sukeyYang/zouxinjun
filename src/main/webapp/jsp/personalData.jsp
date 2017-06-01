@@ -18,6 +18,12 @@
   <title>个人资料</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width,user-scalable=0"/>
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+    window.onresize = function () {
+      document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+    };
+  </script>
   <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/public.css">
   <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/school.css">
 </head>
@@ -97,14 +103,6 @@
   src="http://cache.shchengdian.com/js/PhotoClip-V2.05/jquery-3.1.1.min.js"></script>
 <script>
   $(function () {
-    document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
-    $(window).resize(function () {
-      document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
-    });
-
-    var winHeight = window.innerHeight || document.body.clientHeight;
-    $(".container").css("height", winHeight);
-
     //点击学校或者电话，弹出修改信息层
     $(".school").on("click", function () {
       $(".changeInfo").show();

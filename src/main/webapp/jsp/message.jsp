@@ -20,6 +20,12 @@
   <title>邮筒</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width,user-scalable=0"/>
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+    window.onresize = function () {
+      document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+    };
+  </script>
   <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/public.css">
 </head>
 <body>
@@ -45,14 +51,14 @@
       </div>
       <div class=center-meg>
         <h3>走心君</h3>
-        <p>本月活动通知</p>
+        <%--<p>本月活动通知</p>--%>
       </div>
       <div class="secondary-meg">
         <p class="date">
           <%
             DateFormat sdf = new SimpleDateFormat("HH:mm");
             Date d = new Date();
-            String s =sdf.format(d);
+            String s = sdf.format(d);
           %>
           <%= s %>
         </p>
@@ -64,19 +70,20 @@
       </div>
       <div class=center-meg>
         <h3>主活动消息</h3>
-        <p>您的信件被查看</p>
+        <p style="display: none;">您有消息未查看</p>
       </div>
       <div class="secondary-meg mainUnread">
-        <p class="date"><%= s %></p>
+        <p class="date"><%= s %>
+        </p>
       </div>
     </a>
-    <a href="" class="meg-list clearfix">
+    <a href="sactMessage" class="meg-list clearfix">
       <div class="head">
         <img src="<%=basePath%>/images/head1.jpg">
       </div>
       <div class=center-meg>
         <h3>次活动消息</h3>
-        <p>您的信件被查看</p>
+        <%--<p>您的信件被查看</p>--%>
       </div>
       <div class="secondary-meg">
         <p class="date"><%= s %>
@@ -92,14 +99,6 @@
   src="http://cache.shchengdian.com/js/PhotoClip-V2.05/jquery-3.1.1.min.js"></script>
 <script>
   $(function () {
-    document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
-    $(window).resize(function () {
-      document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
-    });
-
-    var winHeight = window.innerHeight || document.body.clientHeight;
-    $(".container").css("height", winHeight);
-
 //    //点击底部菜单栏的信封按钮，如果有小红点提示信息就删除小红点
 //    $(".tabBar-mail").on("click", function () {
 //      var $tpr = $(this).find(".prompt");
@@ -113,14 +112,16 @@
       var $mpr = $(this).find(".prompt");
       if ($mpr) {
         $mpr.remove();
+        $(".center-meg p").hide();
       }
     });
 
     //如果未读信息不为0，则在相应位置插入小红点提示信息
     var countUnreadMessage = ${userRecord};
-    console.log(countUnreadMessage);
-    if(countUnreadMessage != 0){
+//    console.log(countUnreadMessage);
+    if (countUnreadMessage != 0) {
       $(".mainUnread").append("<span class='prompt'>" + countUnreadMessage + "</span>");
+      $(".center-meg p").show();
     }
 
     // 禁止a标签跳转，测试删除小红点效果

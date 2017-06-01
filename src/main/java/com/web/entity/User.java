@@ -1,5 +1,6 @@
 package com.web.entity;
 
+import java.net.URLEncoder;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.util.StringUtils;
 
 @Entity
 @Table(name = "user")
@@ -83,7 +86,11 @@ public class User {
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        if (!StringUtils.isEmpty(nickname)) {
+            this.nickname = nickname.replaceAll("[\\ud800\\udc00-\\udbff\\udfff\\ud800-\\udfff]", "*");
+        } else {
+            this.nickname = nickname;
+        }
     }
 
     public String getNickname() {

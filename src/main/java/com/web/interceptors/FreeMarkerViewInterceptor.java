@@ -40,6 +40,7 @@ public class FreeMarkerViewInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object object) throws Exception {
         // TODO Auto-generated method stub
+//        request.getSession().setAttribute("openid","onbMpwr1tEsZllXsV_wVjto8qK-k");
         String name = StringUtil.safeToString(request.getSession().getAttribute("openid"), "");
         String path = request.getServletPath();
         path = path.replaceAll("/", "%2F");

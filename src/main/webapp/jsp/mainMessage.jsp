@@ -19,6 +19,12 @@
   <title>邮筒</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width,user-scalable=0"/>
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+    window.onresize = function () {
+      document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+    };
+  </script>
   <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/public.css">
 </head>
 <body>
@@ -40,9 +46,11 @@
     <!-- 主活动信息列表 -->
     <c:forEach var="item" items="${takeAwayLetterList}">
       <div class="aboutMessage">
-          <%--<img src="images/head1.jpg">--%>
+          <%--对方号码item.uphone--%>
         <img src="${item.headimgurl}">
-        <span>你的信件被 ${item.nickname} 领取</span>
+        <span>你的信件被 ${item.nickname} 领取<br/>
+          对方号码：${item.uphone}
+        </span>
         <span>${item.createtime}</span>
         <c:if test="${item.senderRead == 0}">
           <span class="prompt"></span>
@@ -57,7 +65,9 @@
       <div class="aboutMessage">
           <%--<img src="images/head1.jpg">--%>
         <img src="${item.headimgurl}">
-        <span>你领取了${item.nickname}的信件</span>
+        <span>你领取了${item.nickname}的信件<br/>
+           对方号码：${item.phone}
+        </span>
         <span>${item.createtime}</span>
         <c:if test="${item.receiverRead == 0}">
           <span class="prompt sPrompt"></span>
@@ -80,7 +90,8 @@
         联系手机<br/>
         <span>13627666698</span>
       </p>
-      <button type="button" class="btn">完成</button>
+      <button type="button" class="btn btn-pos">完成</button>
+      <div class="bg84"></div>
     </div>
   </div>
 </div>
@@ -89,13 +100,6 @@
   src="http://cache.shchengdian.com/js/PhotoClip-V2.05/jquery-3.1.1.min.js"></script>
 <script>
   $(function () {
-    document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
-    $(window).resize(function () {
-      document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
-    });
-
-    var winHeight = window.innerHeight || document.body.clientHeight;
-    $(".container").css("height", winHeight);
 
     //点击信息列表，如果有小红点提示信息就隐藏小红点
     $(".aboutMessage").on("click", function () {

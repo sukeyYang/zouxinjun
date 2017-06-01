@@ -10,14 +10,14 @@
 }
 
 #choose-box {
-  border: 1px solid #005EAC;
+  border: 1px solid #CCC;
   width: 100%;
   background-color: white;
 }
 
 #choose-box-title {
-  background: #3777BC;
-  color: white;
+  background: #F0F5F8;
+  color: #000;
   padding: 4px 10px 5px;
   font-size: 14px;
   font-weight: 700;
@@ -37,7 +37,7 @@
   display: inline-block;
   height: 18px;
   line-height: 18px;
-  color: #005EAC;
+  color: #000;
   text-decoration: none;
   font-size: 9pt;
   font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;
@@ -52,8 +52,8 @@
 }
 
 #choose-a-province .choosen {
-  background-color: #005EAC;
-  color: white;
+  background-color: #ccc;
+  color: #000;
 }
 
 #choose-a-school {
@@ -65,7 +65,7 @@
 #choose-a-school a {
   height: 18px;
   line-height: 18px;
-  color: #005EAC;
+  color: #000;
   text-decoration: none;
   font-size: 9pt;
   font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;
@@ -93,12 +93,13 @@
 #choose-box-bottom input {
   vertical-align: middle;
   text-align: center;
-  background-color: #005EAC;
+  background-color: #fff;
   color: white;
-  border-top: 1px solid #B8D4E8;
-  border-left: 1px solid #B8D4E8;
-  border-right: 1px solid #114680;
-  border-bottom: 1px solid #114680;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-radius: 5px;
   cursor: pointer;
   width: 60px;
   height: 25px;
